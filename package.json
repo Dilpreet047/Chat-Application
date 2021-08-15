@@ -1,0 +1,19 @@
+{
+  "name": "chat-application",
+  "version": "1.0.0",
+  "description": "Chat application using socket.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dilpreet047/Chat-Application.git"
+  },
+  "author": "Dilpreet Luthra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dilpreet047/Chat-Application/issues"
+  },
+  "homepage": "https://github.com/Dilpreet047/Chat-Application#readme"
+}
