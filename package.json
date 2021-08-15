@@ -4,7 +4,8 @@
   "description": "Chat application using socket.io",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Dilpreet047/Chat-Application/issues"
   },
-  "homepage": "https://github.com/Dilpreet047/Chat-Application#readme"
+  "homepage": "https://github.com/Dilpreet047/Chat-Application#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.1.3"
+  }
 }
