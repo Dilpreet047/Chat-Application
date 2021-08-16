@@ -12,19 +12,18 @@ const io = socketio(server);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
 io.on('connection', (socket) => {
     socket.on('joinRoom', ({username, room}) => {
 
         const user = joinUser(socket.id, username, room);
         
         socket.join(user.room)
-
+        
         //Welcome current user
-        socket.emit('message', formatMessage('', 'Welcome to Chat Application'));
+        socket.emit('message', formatMessage('Welcome', 'Welcome to Chat Application', user.room));
 
         //Broadcast when a user join the chat
-        socket.broadcast.to(user.room).emit('message', formatMessage('', `${user.username} has joined this room`));
+        socket.broadcast.to(user.room).emit('message', formatMessage('', `${user.username} has joined this room`, user.room));
 
         //Send user and room info
         io.to(user.room).emit('roomUsers', {
@@ -37,8 +36,7 @@ io.on('connection', (socket) => {
     socket.on('chatMessage', (chatMessage) => {
 
         const user = getUser(socket.id);
-
-        io.to(user.room).emit('message', formatMessage(user.username, chatMessage));
+        io.to(user.room).emit('message', formatMessage(user.username, chatMessage, user.room));
     })
 
     //Runs when client dissconect
@@ -46,7 +44,7 @@ io.on('connection', (socket) => {
 
         const user = userLeave(socket.id);
         if(user){
-            io.to(user.room).emit('message', formatMessage('', `${user.username} has left this room`));
+            io.to(user.room).emit('message', formatMessage('', `${user.username} has left this room`), user.room);
         }
 
         //Send user and room info
