@@ -16,7 +16,7 @@ const socket = io();
 //Remove user after Leave Button
 leaveButton.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = './index.html';
+    window.location.href = './home.html';
 });
 
 

@@ -1,15 +1,26 @@
 const express = require('express');
+app = express();
 const http = require('http');
 const path = require('path');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const {joinUser, getUser, userLeave, getRoomUsers} = require('./utils/users');
+const mongoose = require('mongoose');
+require('dotenv/config')
+app.use(express.json())
 
-app = express();
+
 const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+const proutes = require('./router/route');
+app.use('/data', proutes);
+
+mongoose.connect(process.env.DB_connect, {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+    console.log('Connected to DB')
+})
 
 
 io.on('connection', (socket) => {
@@ -54,13 +65,6 @@ io.on('connection', (socket) => {
         })
     })
 })
-
-
-
-
-
-
-
 
 
 

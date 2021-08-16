@@ -129,7 +129,7 @@ a {
 
 /*Login page*/
 
-#username, #password {
+#username, #password, #password2 {
 	font-size: 16px;
 	padding: 5px;
 	height: 40px;

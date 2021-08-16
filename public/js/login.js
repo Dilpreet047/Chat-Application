@@ -1,13 +1,24 @@
 /* Username and password*/
-const UsernameLogin = document.getElementById('username');
-const PasswordLogin = document.getElementById('password');
-const LoginButton = document.getElementById('login-btn');
 
-LoginButton.addEventListener('click', (e) => {
+const LoginButton = document.getElementById('login-form');
+
+LoginButton.addEventListener('submit', (e) => {
     e.preventDefault();
-    const un = UsernameLogin.value;
-    const pd = PasswordLogin.value;
-    if(un === 'asd' && pd === '123'){
-        window.location.href = './home.html'
-    }
+    const un = e.target.elements.username.value;
+    const pd = e.target.elements.password.value;
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({username: un, password: pd})
+    };
+
+    fetch('http://localhost:5000/data/login', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log('chala gaya'));
+
+    e.target.elements.username.value = '';
+    e.target.elements.password.value = '';
+
+
 })
