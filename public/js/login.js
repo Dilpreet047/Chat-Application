@@ -1,6 +1,8 @@
 /* Username and password*/
 
 const LoginButton = document.getElementById('login-form');
+const alertMsg = document.getElementById('alert');
+
 
 LoginButton.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -15,10 +17,22 @@ LoginButton.addEventListener('submit', (e) => {
 
     fetch('http://localhost:5000/data/login', requestOptions)
         .then(response => response.json())
-        .then(data => console.log('chala gaya'));
+        .then(data => {
+            if(data.msg == 200){
+                window.location.href = './home.html';
+            }
+            else if(data.msg == 1001){
+                alertMsg.style.display = "block"
+
+            }
+            else{
+                console.log('some error')
+            }
+        });
 
     e.target.elements.username.value = '';
     e.target.elements.password.value = '';
+
 
 
 })

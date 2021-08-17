@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #667aff;
-	--dark-color-b: #7386ff;
-	--light-color: #e6e9ff;
-	--success-color: #5cb85c;
+	--dark-color-a: #000000;
+	--dark-color-b: #0f0f0f;
+	--light-color: #ffffff;
 	--error-color: #d9534f;
 }
 
@@ -42,7 +41,7 @@ a {
 
 .chat-container {
 	max-width: 1100px;
-	background: #fff;
+	background: rgb(218, 209, 209);
 	margin: 30px auto;
 	overflow: hidden;
 }
@@ -129,12 +128,38 @@ a {
 
 /*Login page*/
 
-#username, #password, #password2 {
+#username, #password, #password2{
 	font-size: 16px;
 	padding: 5px;
 	height: 40px;
 	width: 100%;
+	margin-top: 2px;
 }
+
+#alert {
+	padding: 20px;
+	background-color: var(--error-color); /* Red */
+	color: white;
+	margin-bottom: 15px;
+	display: none;
+  }
+  
+  /* The close button */
+  .closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+	color: black;
+  }
 
 /* Join Page */
 .join-container {

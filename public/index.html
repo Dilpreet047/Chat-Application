@@ -22,13 +22,17 @@
         <main class="join-main">
             <form id="login-form">
                 <div class="form-control">
-                    <label for="username">Username</label>
+                    <div id="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            Wrong username or password.
+                      </div>
+                    <label for="username" style="margin-top: 3px;">Username</label>
                     <input type="text" name="username" id="username" placeholder="Enter username..."required/>
-                    <label for="password">Password</label>
+                    <label for="password" style="margin-top: 3px;">Password</label>
                     <input type="password" name="password" id="password" placeholder="Enter password..."required/>
                     <button type="submit" id="login-btn" class="btn">Login</button>
                 </div>
-                <a href="signup.html">
+                <a href="signup.html" style="color: white;">
                     Don't have an account?
                 </a>
     </div>

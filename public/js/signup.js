@@ -1,5 +1,6 @@
 //Getting data from the DOM
 const button = document.getElementById('signup-form');
+const msgBox = document.getElementById('alert');
 
 
 button.addEventListener('submit', (e) => {
@@ -14,10 +15,29 @@ button.addEventListener('submit', (e) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({username: username, password: password})
     };
-
-    fetch('http://localhost:5000/data', requestOptions)
+    
+    if(password === password2){
+        fetch('http://localhost:5000/data', requestOptions)
         .then(response => response.json())
-        .then(data => console.log('chala gaya'));  
+        .then(data => {
+            if(data.msg == 1001){
+                msgBox.style.display = "block";
+                msgBox.innerHTML = `<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Username already taken.`
+            }
+
+            else{
+                window.location.href = './index.html'
+            }
+        }); 
+    }
+
+    else{
+        msgBox.style.display = "block";
+        msgBox.innerHTML = `<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        Password does not match.`
+    }
+     
 
     e.target.elements.username.value = '';
     e.target.elements.password.value = '';
