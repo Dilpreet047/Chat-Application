@@ -17,7 +17,7 @@ button.addEventListener('submit', (e) => {
     };
     
     if(password === password2){
-        fetch('http://localhost:5000/data', requestOptions)
+        fetch('data', requestOptions)
         .then(response => response.json())
         .then(data => {
             if(data.msg == 1001){

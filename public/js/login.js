@@ -15,7 +15,7 @@ LoginButton.addEventListener('submit', (e) => {
         body: JSON.stringify({username: un, password: pd})
     };
 
-    fetch('http://localhost:5000/data/login', requestOptions)
+    fetch('data/login', requestOptions)
         .then(response => response.json())
         .then(data => {
             if(data.msg == 200){
