@@ -56,13 +56,14 @@ io.on('connection', (socket) => {
         const user = userLeave(socket.id);
         if(user){
             io.to(user.room).emit('message', formatMessage('', `${user.username} has left this room`), user.room);
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users: getRoomUsers(user.room)
+            })
         }
 
         //Send user and room info
-        io.to(user.room).emit('roomUsers', {
-            room: user.room,
-            users: getRoomUsers(user.room)
-        })
+        
     })
 })
 
